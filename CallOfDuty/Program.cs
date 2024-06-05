@@ -5,7 +5,6 @@ string file = "Students.txt";
 StudentRepository studentRepository = new StudentRepository(file);
 string folder = "dutys";
 StudentDuty studentDuty = new StudentDuty(studentRepository, folder);
-
 SelectDuty todayDuty = new SelectDuty(studentDuty);
 
 try
