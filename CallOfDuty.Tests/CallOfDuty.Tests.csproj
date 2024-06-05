@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -26,6 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="testStudents5.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="testStudents4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="testStudents.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
