@@ -12,7 +12,7 @@
                 Reject(student);
         }
 
-        Dictionary<Student, bool> studentStatus = new Dictionary<Student, bool>();
+        public Dictionary<Student, bool> studentStatus = new Dictionary<Student, bool>();
         public List<Student> Students { get; set; } = new();
         public int CountApproved { get => studentStatus.Values.Where(s => s).Count(); }
         
