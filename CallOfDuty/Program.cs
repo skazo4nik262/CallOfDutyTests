@@ -28,6 +28,7 @@ namespace CallOfDuty
                 
 
             }
+            Console.ReadLine();
 
         }
 
@@ -41,10 +42,33 @@ namespace CallOfDuty
 
             Console.WriteLine("Введите имя и фамилию студента");
             string fio = Console.ReadLine();
-            fio = fio.Replace(" ", "");
+            fio = fio.Replace(" ", ";");
             //Console.WriteLine(fio);
-            int id = 0;
+            //int id = 0;
+
+            List<string> Students = new();
             foreach (Student a in studentRepository.Students)
+                Students.Add(a.Name +";"+ a.Info);
+            if (Students.Contains(fio))
+            {
+                Console.WriteLine("Студент найден");
+                Console.WriteLine("Введите измененное имя и фамилию");
+                string newfio = Console.ReadLine();
+                newfio = newfio.Replace(" ", ";");
+                if (Students.Contains(fio))
+                {
+                    foreach (var zov in Students)
+                    {
+                        zov.Replace(fio, newfio);
+                        int id = Students.IndexOf(zov);
+                        Students[id] = zov;
+                    }
+
+                }
+
+                File.WriteAllLines(file, Students);
+            }
+            /*foreach (Student a in studentRepository.Students)
             {
                 string b = a.Name + a.Info;
                 if (fio == b )
@@ -53,8 +77,9 @@ namespace CallOfDuty
                     Console.WriteLine("Студент найден");
                     break;
                 }
-            }
-            Console.WriteLine("Введите измененное имя");
+            }*/
+
+            /*Console.WriteLine("Введите измененное имя");
             studentRepository.Students[id].Name = Console.ReadLine();
             Console.WriteLine("Введите измененную фамилию");
             studentRepository.Students[id].Info = Console.ReadLine();
@@ -63,7 +88,7 @@ namespace CallOfDuty
             {
                 Students.Add(z.Name + ";" + z.Info + ";");
             }
-            File.WriteAllLines(file, Students);
+            File.WriteAllLines(file, Students);*/
 
         }
 
