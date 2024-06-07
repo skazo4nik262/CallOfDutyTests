@@ -11,6 +11,64 @@ namespace CallOfDuty
         
         public static void Main(string[] args)
         {
+            Console.WriteLine("Для выбора дежурного напишите: V \nДля редактирования студента напишите: R");
+            string a = Console.ReadLine();
+            switch (a)
+            {
+                case "V":
+                    ViborJertv();
+                    break;
+                case "R":
+                case "К":
+                    RedactStudent();
+                    break;
+                case "М":
+                    ViborJertv();
+                    break;
+                
+
+            }
+
+        }
+
+        private static void RedactStudent()
+        {
+            string file = "Students.txt";
+            StudentRepository studentRepository = new StudentRepository(file);
+            string folder = "dutys";
+            StudentDuty studentDuty = new StudentDuty(studentRepository, folder);
+            SelectDuty todayDuty = new SelectDuty(studentDuty);
+
+            Console.WriteLine("Введите имя и фамилию студента");
+            string fio = Console.ReadLine();
+            fio = fio.Replace(" ", "");
+            //Console.WriteLine(fio);
+            int id = 0;
+            foreach (Student a in studentRepository.Students)
+            {
+                string b = a.Name + a.Info;
+                if (fio == b )
+                {
+                    id = studentRepository.Students.IndexOf(a);
+                    Console.WriteLine("Студент найден");
+                    break;
+                }
+            }
+            Console.WriteLine("Введите измененное имя");
+            studentRepository.Students[id].Name = Console.ReadLine();
+            Console.WriteLine("Введите измененную фамилию");
+            studentRepository.Students[id].Info = Console.ReadLine();
+            List<string> Students = new();
+            foreach (var z in studentRepository.Students)
+            {
+                Students.Add(z.Name + ";" + z.Info + ";");
+            }
+            File.WriteAllLines(file, Students);
+
+        }
+
+        private static void ViborJertv()
+        {
             string file = "Students.txt";
             StudentRepository studentRepository = new StudentRepository(file);
             string folder = "dutys";

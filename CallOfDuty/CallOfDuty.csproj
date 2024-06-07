@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <None Update="Students.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
